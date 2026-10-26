@@ -1,0 +1,21 @@
+{
+  "name": "storybank-public-foundation",
+  "private": true,
+  "version": "0.2.0",
+  "type": "module",
+  "description": "StoryBank private UI prototype and locally tested durable backend foundation. Live providers remain disabled.",
+  "scripts": {
+    "dev": "npm --prefix hosted run dev",
+    "db:local": "npm --prefix hosted run db:local",
+    "check": "node scripts/check-syntax.mjs",
+    "test": "node --test tests/*.test.mjs server/test/*.test.mjs",
+    "test:hosted-ui": "node scripts/test-hosted-ui.mjs && node scripts/test-onboarding-ui.mjs && node scripts/test-linkedin-ui.mjs && node scripts/test-plan-ui.mjs && node scripts/test-profile-ui.mjs && node scripts/test-initial-load-ui.mjs && node scripts/test-manual-writing-ui.mjs && node scripts/test-approval-workflow-ui.mjs",
+    "build": "node scripts/build-hosted.mjs",
+    "dev:prototype": "node dev-server.mjs",
+    "build:prototype": "node build-standalone.mjs",
+    "check:hosted": "cd hosted && ./node_modules/.bin/tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  }
+}
