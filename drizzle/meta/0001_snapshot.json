@@ -1,0 +1,169 @@
+{
+  "version": "6",
+  "dialect": "sqlite",
+  "id": "f27fd24b-0a62-4881-818d-f213e76d83e2",
+  "prevId": "50649916-083c-4e6e-8ff9-977dcb59b65c",
+  "tables": {
+    "storybank_audio": {
+      "name": "storybank_audio",
+      "columns": {
+        "owner_id": {
+          "name": "owner_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "object_key": {
+          "name": "object_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "mime_type": {
+          "name": "mime_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "size": {
+          "name": "size",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "upload_complete": {
+          "name": "upload_complete",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 0
+        }
+      },
+      "indexes": {
+        "storybank_audio_object_key_unique": {
+          "name": "storybank_audio_object_key_unique",
+          "columns": [
+            "object_key"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "storybank_audio_owner_id_id_pk": {
+          "columns": [
+            "owner_id",
+            "id"
+          ],
+          "name": "storybank_audio_owner_id_id_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "audio_size_bounded": {
+          "name": "audio_size_bounded",
+          "value": "\"storybank_audio\".\"size\" > 0 AND \"storybank_audio\".\"size\" <= 10485760"
+        },
+        "audio_status": {
+          "name": "audio_status",
+          "value": "\"storybank_audio\".\"status\" IN ('uploading','active','deleting')"
+        },
+        "audio_upload_complete": {
+          "name": "audio_upload_complete",
+          "value": "\"storybank_audio\".\"upload_complete\" IN (0,1)"
+        }
+      }
+    },
+    "storybank_personal_workspaces": {
+      "name": "storybank_personal_workspaces",
+      "columns": {
+        "tenant_id": {
+          "name": "tenant_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "owner_user_id": {
+          "name": "owner_user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "revision": {
+          "name": "revision",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "payload": {
+          "name": "payload",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "storybank_personal_workspaces_tenant_id_owner_user_id_pk": {
+          "columns": [
+            "tenant_id",
+            "owner_user_id"
+          ],
+          "name": "storybank_personal_workspaces_tenant_id_owner_user_id_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "revision_positive": {
+          "name": "revision_positive",
+          "value": "\"storybank_personal_workspaces\".\"revision\" >= 1"
+        },
+        "payload_json": {
+          "name": "payload_json",
+          "value": "json_valid(\"storybank_personal_workspaces\".\"payload\")"
+        }
+      }
+    }
+  },
+  "views": {},
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "indexes": {}
+  }
+}
