@@ -1,0 +1,17 @@
+# EXAMPLE ONLY. Blank credentials and all provider switches off.
+# Not required for manual loopback preview. Never commit real .dev.vars.
+# Use server-only configuration, never NEXT_PUBLIC_*.
+STORYBANK_SITE_ORIGIN=""
+LINKEDIN_CLIENT_ID=""
+LINKEDIN_CLIENT_SECRET=""
+LINKEDIN_TOKEN_KEY=""
+LINKEDIN_OAUTH_ENABLED="false"
+LINKEDIN_PUBLISHING_ENABLED="false"
+LINKEDIN_SCHEDULER_VERIFIED="false"
+LINKEDIN_RUNNER_ENABLED="false"
+LINKEDIN_RUNNER_OWNER_ID=""
+LINKEDIN_RUNNER_TOKEN_SHA256=""
+LINKEDIN_PKCE_ENABLED="false"
+# Historical source default; verify compatibility before live use.
+LINKEDIN_API_VERSION="202610"
+
